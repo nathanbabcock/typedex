@@ -1,3 +1,7 @@
 packages:
-  - 'indexed-db'
-  - 'site'
+  - indexed-db
+  - site
+
+ignoredBuiltDependencies:
+  - esbuild
+  - sharp

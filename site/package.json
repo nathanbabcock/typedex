@@ -1,6 +1,20 @@
 {
   "name": "@typedex/site",
+  "type": "module",
   "scripts": {
-    "typecheck": "pnpm run --parallel typecheck"
+    "dev": "astro dev",
+    "typecheck": "astro check",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.37.1",
+    "astro": "^5.6.1",
+    "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6"
   }
 }
