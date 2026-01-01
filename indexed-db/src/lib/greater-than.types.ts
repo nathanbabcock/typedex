@@ -132,6 +132,7 @@ export type GreaterThan<A extends number, B extends number> =
     : never
 
 declare const NegativeInfinity: unique symbol
+// oxlint-disable-next-line no-loss-of-precision
 type NegativeInfinity = -1e999
 
 /**

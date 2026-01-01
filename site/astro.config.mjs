@@ -7,7 +7,13 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Typedex',
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/nathanbabcock/typedex' }],
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/nathanbabcock/typedex',
+        },
+      ],
       sidebar: [
         // {
         //   label: 'Guides',
@@ -18,11 +24,11 @@ export default defineConfig({
         // },
         {
           label: 'Guides',
-          autogenerate: { directory: 'guides' }
+          autogenerate: { directory: 'guides' },
         },
         {
           label: 'Typesafety',
-          autogenerate: { directory: 'typesafety' }
+          autogenerate: { directory: 'typesafety' },
         },
         {
           label: 'API Reference',

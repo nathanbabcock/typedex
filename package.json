@@ -4,7 +4,8 @@
     "dev": "pnpm run --parallel dev",
     "test": "pnpm run --parallel test",
     "typecheck": "pnpm run --parallel typecheck",
-    "format": "oxfmt"
+    "format": "oxfmt",
+    "lint": "oxlint --type-aware"
   },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260101.1",
