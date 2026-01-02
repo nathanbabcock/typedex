@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import type { GreaterThan } from './greater-than.types'
 import type { MigrationAction } from './migration-actions.types'
 import type {
   ExtractStoreInfo,
@@ -14,6 +13,7 @@ import type {
   ValidateAutoIncrementKey,
   ValidateKeyPath,
   ValidateMultiEntryIndex,
+  ValidateVersion,
 } from './migration-builder.types'
 import type {
   InvalidAlteration,
@@ -21,7 +21,6 @@ import type {
   InvalidIndexKeyPath,
   InvalidKeyPath,
   InvalidMultiEntry,
-  InvalidVersionOrder,
   Stringify,
   TypeName,
 } from './migration-error.types'
@@ -294,12 +293,7 @@ class MigrationBuilder<
   }
 
   version<NewS extends Schema, const V extends number>(
-    version: PrevVersion extends undefined
-      ? V // First version - any number allowed
-      : GreaterThan<V, PrevVersion & number> extends true
-        ? V
-        : InvalidVersionOrder<`Version ${V} must be greater than previous version ${PrevVersion &
-            number}`>,
+    version: ValidateVersion<V, PrevVersion>,
     fn: (v: VersionBuilder<S>) => VersionBuilder<NewS>
   ): MigrationBuilder<NewS, V> {
     const builder = fn(new VersionBuilder<S>())

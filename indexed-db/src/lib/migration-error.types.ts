@@ -101,3 +101,13 @@ export type InvalidVersionOrder<Message extends string> = MigrationError<
   'InvalidVersionOrder',
   Message
 >
+
+/**
+ * Brand type that produces a clear error message when version ordering is invalid.
+ * Error will show: "number is not assignable to GreaterThan<X>"
+ */
+// oxlint-disable-next-line no-redundant-type-constituents
+export type InvalidVersionNumber<Message extends string> = MigrationError<
+  'InvalidVersionNumber',
+  Message
+>

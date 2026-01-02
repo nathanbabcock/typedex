@@ -92,13 +92,13 @@ type IsEqual<A, B> = [A] extends [B] ? ([B] extends [A] ? true : false) : false
  * - Positive and negative infinity
  *
  * @example
- * type T1 = GreaterThan<5, 3>      // true
- * type T2 = GreaterThan<3, 5>      // false
- * type T3 = GreaterThan<5, 5>      // false
- * type T4 = GreaterThan<-3, -5>    // true (-3 > -5)
- * type T5 = GreaterThan<5, -3>     // true
+ * type T1 = IsGreaterThan<5, 3>      // true
+ * type T2 = IsGreaterThan<3, 5>      // false
+ * type T3 = IsGreaterThan<5, 5>      // false
+ * type T4 = IsGreaterThan<-3, -5>    // true (-3 > -5)
+ * type T5 = IsGreaterThan<5, -3>     // true
  */
-export type GreaterThan<A extends number, B extends number> =
+export type IsGreaterThan<A extends number, B extends number> =
   // Handle distributive conditional types
   A extends A
     ? B extends B
@@ -160,14 +160,14 @@ type CompareFinite<A extends number, B extends number> =
  * type T2 = LessThan<5, 3>   // false
  * type T3 = LessThan<5, 5>   // false
  */
-export type LessThan<A extends number, B extends number> = GreaterThan<B, A>
+export type LessThan<A extends number, B extends number> = IsGreaterThan<B, A>
 
 /**
  * Determine if number A is greater than or equal to number B.
  */
 export type GreaterThanOrEqual<A extends number, B extends number> = A extends B
   ? true
-  : GreaterThan<A, B>
+  : IsGreaterThan<A, B>
 
 /**
  * Determine if number A is less than or equal to number B.

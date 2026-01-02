@@ -10,7 +10,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineEcConfig({
   plugins: [
     ecTwoSlash({
+      includeJsDoc: true,
       twoslashOptions: {
+        cache: false,
+        fsCache: false,
         tsModule: ts,
         compilerOptions: {
           ...ts.convertCompilerOptionsFromJson(

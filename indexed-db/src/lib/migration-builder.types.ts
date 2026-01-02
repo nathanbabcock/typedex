@@ -1,5 +1,7 @@
 import type z from 'zod/v4'
+import type { IsGreaterThan } from './greater-than.types'
 import type { MigrationBuilder } from './migration-builder'
+import type { InvalidVersionNumber } from './migration-error.types'
 
 // Index info tracks the keyPath, multiEntry, and unique flags for each index
 export type IndexInfo<
@@ -397,3 +399,21 @@ export type InferSchema<T> =
           : never
       }>
     : never
+
+/**
+ * Validates that a version number V is:
+ * 1. A literal number (not the broad `number` type)
+ * 2. Greater than the previous version PrevVersion
+ *
+ * Returns V if valid, or an error type that produces helpful messages.
+ */
+export type ValidateVersion<
+  V extends number,
+  PrevVersion extends number | undefined,
+> = number extends V
+  ? `specific numeric literal or static constant (e.g. 1, 2, 3, …)`
+  : PrevVersion extends undefined
+    ? V // First version - any literal number allowed
+    : IsGreaterThan<V, PrevVersion & number> extends true
+      ? V
+      : `integer greater than ${PrevVersion}`

@@ -30,6 +30,10 @@ export default defineConfig({
           autogenerate: { directory: 'typesafety' },
         },
         {
+          label: 'Philosophy',
+          autogenerate: { directory: 'philosophy' },
+        },
+        {
           label: 'API Reference',
           autogenerate: { directory: 'reference' },
         },
