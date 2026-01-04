@@ -1,9 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
+import { remarkCodeImport } from './remark-code-import.mjs'
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkCodeImport],
+  },
   vite: {
     ssr: {
       // https://github.com/withastro/astro/issues/14117#issuecomment-3117797751

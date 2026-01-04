@@ -15,29 +15,13 @@ the version number.
 
 ### Repeating the same version number twice
 
-```ts twoslash
-import { createMigrations } from '@typedex/indexed-db'
-import { z } from 'zod/v4'
-// @errors: 2345
-// ---cut---
-createMigrations()
-  .version(1, v => v.createObjectStore('users', z.object({ id: z.string() })))
-  .version(1, v => v.createObjectStore('posts', z.object({ id: z.string() })))
-```
+[](database-versions-samples/same-version-twice.sample.ts)
 
 This can easily happen as an oversight when copy-pasting from previous migrations.
 
 ### Explicit version number can't be inferred
 
-```ts twoslash
-import { createMigrations } from '@typedex/indexed-db'
-import { z } from 'zod/v4'
-// @errors: 2345
-// ---cut---
-createMigrations()
-  .version(1, v => v.createObjectStore('users', z.object({ id: z.string() })))
-  .version(1 + 1, v => v.createObjectStore('posts', z.object({ id: z.string() })))
-```
+[](database-versions-samples/broad-version-number.sample.ts)
 
 In this case Typescript doesn't evaluate `1 + 1` to `2` at compile time
 (although there are some very cool alternative typecheckers like
@@ -56,26 +40,10 @@ you just need to ensure that the value is a literal at compile time using e.g.
 
 ### Monotonically increasing by 1
 
-```ts twoslash
-import { createMigrations } from '@typedex/indexed-db'
-import { z } from 'zod/v4'
-// ---cut---
-createMigrations()
-  .version(1, v => v.createObjectStore('users', z.object({ id: z.string() })))
-  .version(2, v => v.createObjectStore('posts', z.object({ id: z.string() })))
-  .version(3, v => v.createObjectStore('stuff', z.object({ id: z.string() })))
-```
+[](database-versions-samples/monotonically-increasing.sample.ts)
 
 ### Skipping version numbers
 
 Jumping by more than 1 is totally valid as well:
 
-```ts twoslash
-import { createMigrations } from '@typedex/indexed-db'
-import { z } from 'zod/v4'
-// ---cut---
-createMigrations()
-  .version(1, v => v.createObjectStore('users', z.object({ id: z.string() })))
-  // jump straight to v5, skipping v2, v3, and v4
-  .version(5, v => v.createObjectStore('posts', z.object({ id: z.string() })))
-```
+[](database-versions-samples/skipping-numbers.sample.ts)

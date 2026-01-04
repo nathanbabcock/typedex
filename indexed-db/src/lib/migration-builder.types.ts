@@ -1,7 +1,6 @@
 import type z from 'zod/v4'
 import type { IsGreaterThan } from './greater-than.types'
 import type { MigrationBuilder } from './migration-builder'
-import type { InvalidVersionNumber } from './migration-error.types'
 
 // Index info tracks the keyPath, multiEntry, and unique flags for each index
 export type IndexInfo<

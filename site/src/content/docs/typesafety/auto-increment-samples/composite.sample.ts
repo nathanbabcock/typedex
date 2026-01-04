@@ -1,0 +1,16 @@
+// @errors: 2740
+
+import { createMigrations } from '@typedex/indexed-db'
+import { z } from 'zod/v4'
+
+createMigrations().version(1, v =>
+  v.createObjectStore(
+    'orders',
+    z.object({
+      customerId: z.number(),
+      orderId: z.number(),
+      amount: z.number(),
+    }),
+    { primaryKey: ['customerId', 'orderId'], autoIncrement: true }
+  )
+)
