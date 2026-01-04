@@ -3,8 +3,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./src/lib/migration-builder.ts",
-      "default": "./src/lib/migration-builder.ts"
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
     }
   },
   "scripts": {
