@@ -6,15 +6,15 @@ outline: 'deep'
 
 Defining an object store as [`autoIncrement`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/autoIncrement) imposes some additional constraints on the types of keys that can be used with that object store.
 
-## Auto increment with keypath
+## Keypath must point to a number
 
 <<< @/samples/keypath.sample.ts{ts twoslash}
 
-## Auto increment with out-of-line keys
+## Out-of-line keys must be numbers
 
 <<< @/samples/out-of-line.sample.ts{ts twoslash}
 
-## Auto increment with composite keys
+## Auto increment cannot be used with composite keys
 
 The IndexedDB spec specifically disallows using `autoIncrement` with composite
 (array) primary keys.
